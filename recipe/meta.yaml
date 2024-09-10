@@ -1,5 +1,5 @@
 {% set name = "radarx" %}
-{% set version = "0.1.5" %}
+{% set version = "0.1.6" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 20ce84b8097d2931fa639638670672c45111d53f820c9d7ee999ea72f97b0ed4
+  sha256: d60d1096f51286e37aec13ba7c2cda8e976c5da57cce8454470c6f034359f019
 
 build:
   number: 0
