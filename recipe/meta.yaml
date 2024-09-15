@@ -1,5 +1,5 @@
 {% set name = "radarx" %}
-{% set version = "0.1.6" %}
+{% set version = "0.1.7" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d60d1096f51286e37aec13ba7c2cda8e976c5da57cce8454470c6f034359f019
+  sha256: b19e3878e1b77bc3a0e11a33e715381bec97d5d9ea4e8c11a77fcb18b6cd28cb
 
 build:
   number: 0
@@ -28,6 +28,7 @@ requirements:
     - xradar
     - netcdf4
     - cartopy >=0.20.0
+    - pooch
 
 test:
   imports:
