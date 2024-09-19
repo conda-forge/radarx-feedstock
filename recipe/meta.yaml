@@ -1,5 +1,5 @@
 {% set name = "radarx" %}
-{% set version = "0.1.7" %}
+{% set version = "0.1.8" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b19e3878e1b77bc3a0e11a33e715381bec97d5d9ea4e8c11a77fcb18b6cd28cb
+  sha256: 00cf4a4f0dd7e40b34e8e07a4d695614ba94260fbbeb1560fd01cb3d120bc90e
 
 build:
   number: 0
@@ -33,10 +33,10 @@ requirements:
 test:
   imports:
     - radarx
-  requires:  
-    - pip  
-  commands:  
-    - pip check  
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/syedhamidali/radarx
