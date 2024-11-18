@@ -1,34 +1,37 @@
 {% set name = "radarx" %}
-{% set version = "0.1.9" %}
+{% set version = "0.2.0" %}
 
 package:
-  name: {{ name }}
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9a1ccaf7fd97f82098a08d6d821a9dfffc5beb7523864293ee815c1a088835c7
+  sha256: c30b519de9afb93e48b521b8ba0aa662249169ff2aa0f26d68c2e5ca4ed33218
 
 build:
-  number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
-    - python >=3.8
-    - setuptools >=61.0.0
-    - setuptools-scm >=6.2
-    - wheel
+    - python >=3.9
     - pip
+    - setuptools
+    - setuptools_scm
+
   run:
-    - python >=3.8
-    - xarray <=2024.9.0
-    - xarray-datatree
-    - xradar
+    - python >=3.9
+    - packaging
+    - numpy
     - netcdf4
+    - xarray >=2024.10.0
+    - xmltodict
+    - pyproj
     - cartopy >=0.20.0
     - pooch
+    - xradar
 
 test:
   imports:
