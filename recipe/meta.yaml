@@ -1,5 +1,5 @@
 {% set name = "radarx" %}
-{% set version = "0.1.8" %}
+{% set version = "0.1.9" %}
 
 package:
   name: {{ name }}
@@ -23,7 +23,7 @@ requirements:
     - pip
   run:
     - python >=3.8
-    - xarray >=2023.12.0
+    - xarray <=2024.9.0
     - xarray-datatree
     - xradar
     - netcdf4
