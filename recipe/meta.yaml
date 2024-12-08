@@ -1,13 +1,13 @@
 {% set name = "radarx" %}
-{% set version = "0.2.0" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c30b519de9afb93e48b521b8ba0aa662249169ff2aa0f26d68c2e5ca4ed33218
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 5c9e0eb3e4328548f5f86d5fd623febed64c76f12c6490bd9520a0f719ef3dd8
 
 build:
   noarch: python
@@ -16,13 +16,13 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python >=3.10
     - pip
     - setuptools
     - setuptools_scm
 
   run:
-    - python >=3.9
+    - python >=3.10
     - packaging
     - numpy
     - netcdf4
@@ -30,6 +30,7 @@ requirements:
     - xmltodict
     - pyproj
     - cartopy >=0.20.0
+    - boto3
     - pooch
     - xradar
 
