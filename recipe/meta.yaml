@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "radarx" %}
 {% set version = "0.2.2" %}
 
@@ -12,17 +13,17 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.10
+    - python {{ python_min }}
     - pip
     - setuptools
     - setuptools_scm
 
   run:
-    - python >=3.10
+    - python >={{ python_min }}
     - packaging
     - numpy
     - netcdf4
@@ -39,6 +40,7 @@ test:
     - radarx
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
