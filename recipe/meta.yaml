@@ -1,6 +1,6 @@
 {% set python_min = "3.10" %}
 {% set name = "radarx" %}
-{% set version = "0.2.5" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5508e6c96811b310fe47ea0981ac213489f142f99c503b710cafa0e40b62d990
+  sha256: f6298153c365eac12ec5beeacd55dc4c07c9ccdd3a56f117ee64404a15c7bd62
 
 build:
   noarch: python
@@ -25,6 +25,9 @@ requirements:
   run:
     - python >={{ python_min }}
     - packaging
+    - cmweather
+    - lat_lon_parser
+    - matplotlib-base
     - numpy
     - netcdf4
     - xarray >=2024.10.0
@@ -39,6 +42,8 @@ requirements:
 test:
   imports:
     - radarx
+    - radarx.io
+    - radarx.vis
   requires:
     - pip
     - python {{ python_min }}
