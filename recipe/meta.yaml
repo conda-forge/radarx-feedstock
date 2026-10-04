@@ -1,6 +1,6 @@
 {% set python_min = "3.10" %}
 {% set name = "radarx" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f6298153c365eac12ec5beeacd55dc4c07c9ccdd3a56f117ee64404a15c7bd62
+  sha256: 9c65ae85cd281c920d48eb0e1118cab688b0de489370a76922e207d3faa9ee8c
 
 build:
   noarch: python
