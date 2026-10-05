@@ -1,6 +1,5 @@
-{% set python_min = "3.10" %}
 {% set name = "radarx" %}
-{% set version = "0.3.1" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,53 +7,64 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9c65ae85cd281c920d48eb0e1118cab688b0de489370a76922e207d3faa9ee8c
+  sha256: 7c216120a55ffbc888196b1ed950114de9f9e1814ecc7e5ebe52b45f1d6fce7b
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   number: 0
+  skip: true  # [py<310]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - pybind11 >=2.12                        # [build_platform != target_platform]
   host:
-    - python {{ python_min }}
+    - python
     - pip
-    - setuptools
-    - setuptools_scm
-
+    - setuptools >=64
+    - setuptools-scm >=8
+    - wheel
+    - pybind11 >=2.12
   run:
-    - python >={{ python_min }}
+    - python
     - packaging
+    - boto3
+    - cartopy >=0.20.0
     - cmweather
     - lat_lon_parser
     - matplotlib-base
-    - numpy
     - netcdf4
+    - numpy
+    - pooch
+    - pyproj
+    - scipy
     - xarray >=2024.10.0
     - xmltodict
-    - pyproj
-    - cartopy >=0.20.0
-    - boto3
-    - pooch
-    - xradar
-    - scipy <=1.14.1
+    - xradar >=0.11
 
 test:
   imports:
     - radarx
     - radarx.io
     - radarx.vis
+    - radarx.grid._cone
   requires:
     - pip
-    - python {{ python_min }}
   commands:
     - pip check
+    - python -c "from radarx.grid import cone; assert cone.HAS_COMPILED_KERNEL"
 
 about:
   home: https://github.com/syedhamidali/radarx
   summary: 'Xarray-based radar toolkit for radar data analysis'
   description: |
-    radarx is a Python package built for processing and visualizing radar data using xarray, integrating closely with xradar and datatree libraries for effective manipulation of radar data.
+    radarx is a Python package for processing and visualizing weather radar
+    data with xarray. It builds on xradar and adds fast cone gridding (with a
+    compiled C++ kernel), CAPPI retrieval, interactive plotting and
+    unstructured-grid conversion.
   license: MIT
   license_family: MIT
   license_file: LICENSE
