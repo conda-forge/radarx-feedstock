@@ -14,9 +14,10 @@ Development: https://github.com/syedhamidali/radarx
 Documentation: https://radarx.readthedocs.io/
 
 radarx is a Python package for processing and visualizing weather radar
-data with xarray. It builds on xradar and adds fast cone gridding (with a
-compiled C++ kernel), CAPPI retrieval, interactive plotting and
-unstructured-grid conversion.
+data with xarray. It builds on xradar and adds quality control, polarimetric
+retrievals, rainfall and drop size products, dealiasing, multi-Doppler winds,
+tropical-cyclone and tornado tools and fast cone gridding, with compiled C++
+kernels and NumPy fallbacks.
 
 
 Current build status
@@ -44,13 +45,6 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>osx_64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23348&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/radarx-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
               <td>osx_64_python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23348&branchName=main">
