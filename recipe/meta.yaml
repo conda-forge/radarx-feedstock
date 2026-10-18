@@ -1,5 +1,5 @@
 {% set name = "radarx" %}
-{% set version = "0.5.1" %}
+{% set version = "0.5.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c13804a3cac5c02f69f878885a7378cde3cddc4bd541d89656f5c643751cbd54
+  sha256: 15dd011b824d32dbc66de252525b2421b5d2c5a85d4139748e704aebebc66b8d
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py<312]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
