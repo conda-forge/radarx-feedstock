@@ -1,5 +1,5 @@
 {% set name = "radarx" %}
-{% set version = "0.5.2" %}
+{% set version = "0.5.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 15dd011b824d32dbc66de252525b2421b5d2c5a85d4139748e704aebebc66b8d
+  sha256: 8db28f656cd78cb590e442d6505130a5816a853604701fd549daabcba54be266
 
 build:
   number: 0
@@ -41,9 +41,9 @@ requirements:
     - pooch
     - pyproj
     - scipy
-    - xarray >=2024.10.0
+    - xarray >=2026.7.0
     - xmltodict
-    - xradar >=0.11
+    - xradar >=0.13
 
 test:
   imports:
